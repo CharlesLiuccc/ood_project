@@ -1,7 +1,9 @@
 package com.gwu.backend.Controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.gwu.backend.DAO.CatalogDAO;
 import com.gwu.backend.DAO.UserDAO;
+import com.gwu.backend.Model.Catalog;
 import com.gwu.backend.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,8 @@ import java.util.Objects;
 public class UserController {
     @Autowired
     public UserDAO userDAO;
+    @Autowired
+    public CatalogDAO catalogDAO;
 
     @RequestMapping("/login")
     public String UserLogin(@RequestParam String user_mail,String user_pwd){
@@ -40,17 +44,26 @@ public class UserController {
         if(userDAO.findByMail(user_mail).getUser_id()==-1){
             User new_user = new User(user_mail,user_name,user_pwd);
             if(userDAO.addUser(new_user)){
-                //add new user succeed
-                return JSONObject.toJSONString(0);
+
+                int new_user_id=userDAO.findByMail(new_user.getUser_mail()).getUser_id();
+                if (catalogDAO.addCatalog(new_user_id)) {
+                    //add new user succeed
+                    return JSONObject.toJSONString(0);
+                }
+                else {
+                    //database error: add new catalog fail
+                    userDAO.deleteUser(user_mail);
+                    return JSONObject.toJSONString(1);
+                }
             }
             else{
-                //database error
+                //database error: add new user fail
                 return JSONObject.toJSONString(1);
             }
         }
         //mail already exists
         else{
-            return JSONObject.toJSONString(0);
+            return JSONObject.toJSONString(2);
         }
     }
 
@@ -72,8 +85,8 @@ public class UserController {
         }
     }
 
-    @RequestMapping("/changeMail")
-    public String ChangeUserMail(@RequestParam String user_id, String old_pwd,String user_mail){
+    @RequestMapping("/changeInfo")
+    public String ChangeUserInfo(@RequestParam String user_id, String old_pwd,String user_mail,String user_name){
         User current_user = userDAO.findByID(Integer.parseInt(user_id));
         //incorrect old password
         if(!Objects.equals(current_user.getUser_pwd(), old_pwd)){
@@ -81,6 +94,7 @@ public class UserController {
         }
         else{
             current_user.setUser_mail(user_mail);
+            current_user.setUser_name(user_name);
             //change pwd succeed
             if(userDAO.editUser(current_user)){
                 return JSONObject.toJSONString(0);

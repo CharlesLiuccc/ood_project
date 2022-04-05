@@ -13,6 +13,7 @@ import java.sql.SQLException;
 public class UserDAO {
     @Autowired
     JdbcTemplate jdbcTemplate;
+
     public User findByMail(String mail){
         User result = new User();
         String sql = "SELECT * FROM user WHERE user_mail = ?";
@@ -48,17 +49,24 @@ public class UserDAO {
     }
 
     public boolean addUser(User user){
-
-        return true;
+        if(findByMail(user.getUser_mail()).getUser_id()==-1){
+            String sql = "INSERT INTO user(user_name,user_mail,user_pwd) VALUES(?,?,?)";
+            jdbcTemplate.update(sql,user.getUser_name(),user.getUser_mail(),user.getUser_pwd());
+            return true;
+        }
+        //already exist
+        return false;
     }
 
     public boolean editUser(User user){
-
+        String sql = "UPDATE user set user_name = ?, user_mail = ?, user_pwd = ? WHERE user_id = ?";
+        jdbcTemplate.update(sql,user.getUser_name(),user.getUser_mail(),user.getUser_pwd(),user.getUser_id());
         return true;
     }
 
     public boolean deleteUser(String mail){
-
+        String sql = "DELETE FROM user WHERE user_mail = ?";
+        jdbcTemplate.update(sql,mail);
         return true;
     }
 }
