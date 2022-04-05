@@ -27,6 +27,25 @@ public class CatalogDAO {
         });
         return result;
     }
+    public Catalog findById(int catalog_id){
+        Catalog result = new Catalog();
+        String sql = "SELECT * FROM catalog WHERE catalog_id = ?";
+        jdbcTemplate.query(sql,new Object[]{catalog_id}, new RowCallbackHandler() {
+            @Override
+            public void processRow(ResultSet rs) throws SQLException {
+                result.setCatalog_id(catalog_id);
+                result.setUser_id(rs.getInt("user_id"));
+                result.setAmount(rs.getInt("amount"));
+            }
+        });
+        return result;
+    }
+
+    public boolean updateAmount(int catalog_id,int amount){
+        String sql = "UPDATE catalog set amount = ? WHERE catalog_id = ?";
+        jdbcTemplate.update(sql,amount,catalog_id);
+        return true;
+    }
 
     public boolean addCatalog(int user_id){
         Catalog current_catalog = new Catalog(user_id);

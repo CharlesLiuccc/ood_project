@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Objects;
 
 @Controller
-@ResponseBody
 @CrossOrigin(maxAge = 3600,origins = "*")
 @RequestMapping("/user")
 public class UserController {
@@ -25,6 +24,7 @@ public class UserController {
     public CatalogDAO catalogDAO;
 
     @RequestMapping("/login")
+    @ResponseBody
     public String UserLogin(@RequestParam String user_mail,String user_pwd){
         User current_user=userDAO.findByMail(user_mail);
         //mail does not exist
@@ -40,6 +40,7 @@ public class UserController {
     }
 
     @RequestMapping("/register")
+    @ResponseBody
     public String UserRegister(@RequestParam String user_mail,String user_name,String user_pwd){
         if(userDAO.findByMail(user_mail).getUser_id()==-1){
             User new_user = new User(user_mail,user_name,user_pwd);
@@ -68,6 +69,7 @@ public class UserController {
     }
 
     @RequestMapping("/changePwd")
+    @ResponseBody
     public String ChangePassword(@RequestParam String user_id, String old_pwd,String new_pwd){
         User current_user = userDAO.findByID(Integer.parseInt(user_id));
         //incorrect old password
@@ -86,6 +88,7 @@ public class UserController {
     }
 
     @RequestMapping("/changeInfo")
+    @ResponseBody
     public String ChangeUserInfo(@RequestParam String user_id, String old_pwd,String user_mail,String user_name){
         User current_user = userDAO.findByID(Integer.parseInt(user_id));
         //incorrect old password
@@ -102,6 +105,21 @@ public class UserController {
             //database error
             else{return JSONObject.toJSONString(1);}
         }
+    }
+
+    @RequestMapping("/catalog")
+    @ResponseBody
+    public String getCatalog_id(@RequestParam String user_id){
+        Catalog current_catalog = catalogDAO.findByUser(Integer.parseInt(user_id));
+        if(current_catalog.getCatalog_id()==-1){
+            //no such catalog, please contact the administrator
+            return JSONObject.toJSONString(2);
+        }
+        else{
+            return JSONObject.toJSONString(0)+",catalog_id:"+JSONObject.toJSONString(current_catalog.getCatalog_id())
+                    +",amount:"+JSONObject.toJSONString(current_catalog.getAmount());
+        }
+
     }
 
 
