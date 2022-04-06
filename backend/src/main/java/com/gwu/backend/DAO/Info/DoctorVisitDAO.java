@@ -17,12 +17,13 @@ public class DoctorVisitDAO {
     //find information by id
     public DoctorVisit findById(int info_id){
         DoctorVisit result = new DoctorVisit();
-        String sql = "SELECT * FRIM doctor_visit_info WHERE info_id = ?";
+        String sql = "SELECT * FROM doctor_visit_info WHERE info_id = ?";
         jdbcTemplate.query(sql, new Object[]{info_id}, new RowCallbackHandler() {
             @Override
             public void processRow(ResultSet rs) throws SQLException {
                 result.setInfo_id(info_id);
                 result.setCatalog_id(rs.getInt("catalog_id"));
+                result.setInfo_timestamp(rs.getString("info_timestamp"));
                 result.setDoctor_name(rs.getString("doctor_name"));
                 result.setVisit_date(rs.getString("visit_date"));
                 result.setVisit_detail(rs.getString("visit_detail"));
@@ -41,6 +42,7 @@ public class DoctorVisitDAO {
                 DoctorVisit visit = new DoctorVisit();
                 visit.setInfo_id(rs.getInt("info_id"));
                 visit.setCatalog_id(catalog_id);
+                visit.setInfo_timestamp(rs.getString("info_timestamp"));
                 visit.setDoctor_name(rs.getString("doctor_name"));
                 visit.setVisit_date(rs.getString("visit_date"));
                 visit.setVisit_detail(rs.getString("visit_detail"));
@@ -52,8 +54,8 @@ public class DoctorVisitDAO {
 
     //add new doctor visit information
     public boolean addInfo(DoctorVisit visit){
-        String sql = "INSERT INTO doctor_visit_info(catalog_id,doctor_name,visit_date,visit_detail) values(?,?,?,?)";
-        jdbcTemplate.update(sql,visit.getCatalog_id(),visit.getDoctor_name(),visit.getVisit_date(),visit.getVisit_detail());
+        String sql = "INSERT INTO doctor_visit_info(catalog_id,info_timestamp,doctor_name,visit_date,visit_detail) values(?,?,?,?,?)";
+        jdbcTemplate.update(sql,visit.getCatalog_id(),visit.getInfo_timestamp(),visit.getDoctor_name(),visit.getVisit_date(),visit.getVisit_detail());
         return true;
     }
 
@@ -68,8 +70,4 @@ public class DoctorVisitDAO {
             return true;
         }
     }
-
-
-    
-
 }
