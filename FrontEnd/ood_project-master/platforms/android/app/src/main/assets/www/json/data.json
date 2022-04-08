@@ -1,0 +1,28 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 1000,
+  "data": [
+    {
+      "id": 1,
+      "name": "java教程",
+      "description": "第一篇文章...",
+      "author": "张三",
+      "uploadTime": 1580572800000
+    },
+    {
+      "id": 2,
+      "name": "java教程",
+      "description": "第一篇文章...",
+      "author": "张三",
+      "uploadTime": 1580572800000
+    },
+    {
+      "id": 3,
+      "name": "java教程",
+      "description": "第一篇文章...",
+      "author": "张三",
+      "uploadTime": 1580572800000
+    }
+  ]
+}

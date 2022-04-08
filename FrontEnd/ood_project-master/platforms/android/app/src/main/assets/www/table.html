@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>table模块快速使用</title>
+    <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
+    <script src="../static/layui/layui.js"></script>
+</head>
+<body>
+
+<table id="demo" lay-filter="test"></table>
+
+</body>
+<script>
+    layui.use('table', function(){
+        var table = layui.table;
+
+        table.render({
+            elem: '#demo'
+            ,toolbar: true // 显示表格工具栏（列显/隐、导出、打印）
+            ,height: 600
+            ,url: '/json/data.json' // 数据接口(访问 .json 静态数据)
+            ,page: true // 开启分页(默认分页样式)
+            // ,page:{limit: 5 // 使用分页参数
+            //     ,limits: [5, 10, 20] // 可选每页条数下拉框
+            //     ,first: '首页'
+            //     ,last: '尾页'
+            //     ,prev: '<em>←</em>>'
+            //     ,next: '<i class="layui-icon layui-icon-next"></i>'
+            //     ,layout:['prev', 'page', 'next', 'count', 'limit', 'skip', 'refresh']  // 自定义分页布局
+            // }
+            ,cols: [[ //表头
+                {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
+                ,{field: 'username', title: '用户名', width:80}
+                ,{field: 'sex', title: '性别', width:80, sort: true}
+                ,{field: 'city', title: '城市', width:80}
+                ,{field: 'sign', title: '签名', width: 177}
+                ,{field: 'experience', title: '积分', width: 80, sort: true}
+                ,{field: 'score', title: '评分', width: 80, sort: true}
+                ,{field: 'classify', title: '职业', width: 80}
+                ,{field: 'wealth', title: '财富', width: 135, sort: true}
+                ,{field: 'right', title: '操作', toolbar: '#barDemo'}
+            ]]
+        });
+
+        // 操作按钮的事件
+        //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+        table.on('tool(test)', function(obj){
+            var data = obj.data; //获得当前行数据
+            //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+            var layEvent = obj.event;
+            var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+            if(layEvent === 'del'){ //删除
+                layer.confirm('真的删除行么', function(index){
+                    // 向服务端发送删除请求
+                    // $.ajax(
+                    //     url:"deleteUser"
+                    //     ...
+                    // )
+                    // 此处可以发送ajax
+                    obj.del(); //删除对应行（tr）的DOM结构
+                    layer.close(index);
+                });
+            } else if(layEvent === 'edit'){ //编辑
+                // 向服务端发送更新请求
+                // 同步更新缓存对应的值
+                obj.update({
+                    username: 'shine001',
+                    city: '北京',
+                    sex:'女',
+                    score:99});
+            }
+        });
+    });
+</script>
+
+<!--js定义两个操作表格的按钮：编辑、删除-->
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+</html>
