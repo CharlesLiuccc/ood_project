@@ -3,39 +3,36 @@ package com.gwu.backend.Controller.Info;
 
 import com.alibaba.fastjson.JSONObject;
 import com.gwu.backend.DAO.CatalogDAO;
-import com.gwu.backend.DAO.Info.SymptomDAO;
+import com.gwu.backend.DAO.Info.TripDAO;
 import com.gwu.backend.Model.Catalog;
-import com.gwu.backend.Model.Info.Symptom;
+import com.gwu.backend.Model.Info.Trip;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
 @RestController
 @CrossOrigin(maxAge = 3600,origins = "*")
-@RequestMapping("/symptom")
-public class SymptomController {
+@RequestMapping("/trip")
+public class TripController {
     @Autowired
-    SymptomDAO symptomDAO;
+    TripDAO tripDAO;
     @Autowired
     CatalogDAO catalogDAO;
 
     @RequestMapping("/getAllInfo")
     public String getAllInfo(@RequestParam String catalog_id){
-        ArrayList<Symptom> result = new ArrayList<>();
-        result=symptomDAO.findByCatalog(Integer.parseInt(catalog_id));
+        ArrayList<Trip> result = new ArrayList<>();
+        result=tripDAO.findByCatalog(Integer.parseInt(catalog_id));
         return JSONObject.toJSONString(result);
     }
 
     @RequestMapping("/addInfo")
-    public String addInfo(@RequestParam String catalog_id,String time,String type,String detail){
+    public String addInfo(@RequestParam String catalog_id,String start,String end,String place,String detail){
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        Symptom current_symptom = new Symptom(Integer.parseInt(catalog_id),timestamp.toString(),time,type,detail);
-        if(symptomDAO.addInfo(current_symptom)){
+        Trip current_trip = new Trip(Integer.parseInt(catalog_id),timestamp.toString(),start,end,place,detail);
+        if(tripDAO.addInfo(current_trip)){
             Catalog current_catalog = catalogDAO.findById(Integer.parseInt(catalog_id));
             current_catalog.addInfo();
             if(catalogDAO.updateAmount(Integer.parseInt(catalog_id),current_catalog.getAmount())){
@@ -55,15 +52,16 @@ public class SymptomController {
     }
 
     @RequestMapping("/deleteInfo")
+    @ResponseBody
     public String deleteInfo(@RequestParam String info_id){
-        Symptom current_symptom = symptomDAO.findById(Integer.parseInt(info_id));
-        if(current_symptom.getCatalog_id()==-1){
+        Trip current_trip = tripDAO.findById(Integer.parseInt(info_id));
+        if(current_trip.getCatalog_id()==-1){
             //info does not exist
             return JSONObject.toJSONString(3);
         }
         else{
-            if(symptomDAO.deleteInfo(Integer.parseInt(info_id))){
-                Catalog current_catalog = catalogDAO.findById(current_symptom.getCatalog_id());
+            if(tripDAO.deleteInfo(Integer.parseInt(info_id))){
+                Catalog current_catalog = catalogDAO.findById(current_trip.getCatalog_id());
                 current_catalog.removeInfo();
                 if(catalogDAO.updateAmount(current_catalog.getCatalog_id(),current_catalog.getAmount())) {
                     return JSONObject.toJSONString(0);

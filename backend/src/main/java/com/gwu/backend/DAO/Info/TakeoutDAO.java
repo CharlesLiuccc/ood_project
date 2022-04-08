@@ -1,6 +1,6 @@
 package com.gwu.backend.DAO.Info;
 
-import com.gwu.backend.Model.Info.Symptom;
+import com.gwu.backend.Model.Info.Takeout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowCallbackHandler;
@@ -11,49 +11,49 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 @Repository
-public class SymptomDAO {
+public class TakeoutDAO {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public ArrayList<Symptom> findByCatalog(int catalog_id){
-        ArrayList<Symptom> result = new ArrayList<>();
-        String sql = "SELECT * FROM symptom_info WHERE catalog_id = ?";
+    public ArrayList<Takeout> findByCatalog(int catalog_id){
+        ArrayList<Takeout> result = new ArrayList<>();
+        String sql = "SELECT * FROM takeout_info WHERE catalog_id = ?";
         jdbcTemplate.query(sql, new Object[]{catalog_id}, new RowCallbackHandler() {
             @Override
             public void processRow(ResultSet rs) throws SQLException {
-                Symptom current = new Symptom();
+                Takeout current = new Takeout();
                 current.setInfo_id(rs.getInt("info_id"));
                 current.setCatalog_id(catalog_id);
                 current.setInfo_timestamp(rs.getString("info_timestamp"));
-                current.setSymptom_type(rs.getString("symptom_type"));
-                current.setStart_time(rs.getString("start_time"));
-                current.setSymptom_detail(rs.getString("symptom_detail"));
+                current.setTakeout_place(rs.getString("takeout_place"));
+                current.setTakeout_date(rs.getString("takeout_date"));
+                current.setTakeout_detail(rs.getString("takeout_detail"));
                 result.add(current);
             }
         });
         return result;
     }
 
-    public Symptom findById(int info_id){
-        Symptom result = new Symptom();
-        String sql = "SELECT * FROM symptom_info WHERE info_id = ?";
+    public Takeout findById(int info_id){
+        Takeout result = new Takeout();
+        String sql = "SELECT * FROM takeout_info WHERE info_id = ?";
         jdbcTemplate.query(sql, new Object[]{info_id}, new RowCallbackHandler() {
             @Override
             public void processRow(ResultSet rs) throws SQLException {
                 result.setInfo_id(info_id);
                 result.setCatalog_id(rs.getInt("catalog_id"));
                 result.setInfo_timestamp(rs.getString("info_timestamp"));
-                result.setStart_time(rs.getString("start_time"));
-                result.setSymptom_type(rs.getString("symptom_type"));
-                result.setSymptom_detail(rs.getString("symptom_detail"));
+                result.setTakeout_date(rs.getString("takeout_date"));
+                result.setTakeout_place(rs.getString("takeout_place"));
+                result.setTakeout_detail(rs.getString("takeout_detail"));
             }
         });
         return result;
     }
 
-    public boolean addInfo(Symptom symptom){
-        String sql = "INSERT INTO symptom_info(catalog_id,info_timestamp,start_time,symptom_type,symptom_detail) VALUES(?,?,?,?,?)";
-        jdbcTemplate.update(sql,symptom.getCatalog_id(),symptom.getInfo_timestamp(),symptom.getStart_time(),symptom.getSymptom_type(),symptom.getSymptom_detail());
+    public boolean addInfo(Takeout takeout){
+        String sql = "INSERT INTO takeout_info(catalog_id,info_timestamp,takeout_place,takeout_date,takeout_detail) VALUES(?,?,?,?,?)";
+        jdbcTemplate.update(sql,takeout.getCatalog_id(),takeout.getInfo_timestamp(),takeout.getTakeout_place(),takeout.getTakeout_date(),takeout.getTakeout_detail());
         return true;
     }
 
@@ -62,9 +62,10 @@ public class SymptomDAO {
             return false;
         }
         else{
-            String sql = "DELETE FROM symptom_info WHERE info_id = ?";
+            String sql = "DELETE FROM takeout_info WHERE info_id = ?";
             jdbcTemplate.update(sql,info_id);
             return true;
         }
     }
+
 }

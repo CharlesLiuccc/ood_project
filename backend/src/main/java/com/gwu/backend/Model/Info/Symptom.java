@@ -5,7 +5,7 @@ public class Symptom {
     private int info_id;
     private String info_timestamp;
     private String start_time;
-    private int symptom_type;
+    private String symptom_type;
     private String symptom_detail;
 
     public Symptom(){
@@ -13,11 +13,11 @@ public class Symptom {
         this.info_id=-1;
         this.info_timestamp="";
         this.start_time="";
-        this.symptom_type=-1;
+        this.symptom_type="";
         this.symptom_detail="";
     }
 
-    public Symptom(int catalog_id,String timestamp,String time,int type,String detail){
+    public Symptom(int catalog_id,String timestamp,String time,String type,String detail){
         this.catalog_id=catalog_id;
         this.info_id=-1;
         this.info_timestamp=timestamp;
@@ -54,7 +54,7 @@ public class Symptom {
         this.start_time = start_time;
     }
 
-    public int getSymptom_type() {
+    public String getSymptom_type() {
         return symptom_type;
     }
 
@@ -66,7 +66,7 @@ public class Symptom {
         return start_time;
     }
 
-    public void setSymptom_type(int symptom_type) {
+    public void setSymptom_type(String symptom_type) {
         this.symptom_type = symptom_type;
     }
 

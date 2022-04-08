@@ -1,6 +1,7 @@
 package com.gwu.backend.DAO.Info;
 
-import com.gwu.backend.Model.Info.Symptom;
+import com.gwu.backend.Model.Info.Takeout;
+import com.gwu.backend.Model.Info.Trip;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowCallbackHandler;
@@ -11,32 +12,33 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 @Repository
-public class SymptomDAO {
+public class TripDAO {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public ArrayList<Symptom> findByCatalog(int catalog_id){
-        ArrayList<Symptom> result = new ArrayList<>();
-        String sql = "SELECT * FROM symptom_info WHERE catalog_id = ?";
+    public ArrayList<Trip> findByCatalog(int catalog_id){
+        ArrayList<Trip> result = new ArrayList<>();
+        String sql = "SELECT * FROM trip_info WHERE catalog_id = ?";
         jdbcTemplate.query(sql, new Object[]{catalog_id}, new RowCallbackHandler() {
             @Override
             public void processRow(ResultSet rs) throws SQLException {
-                Symptom current = new Symptom();
+                Trip current = new Trip();
                 current.setInfo_id(rs.getInt("info_id"));
                 current.setCatalog_id(catalog_id);
                 current.setInfo_timestamp(rs.getString("info_timestamp"));
-                current.setSymptom_type(rs.getString("symptom_type"));
                 current.setStart_time(rs.getString("start_time"));
-                current.setSymptom_detail(rs.getString("symptom_detail"));
+                current.setEnd_time(rs.getString("end_time"));
+                current.setTrip_destination(rs.getString("trip_destination"));
+                current.setTrip_detail(rs.getString("trip_detail"));
                 result.add(current);
             }
         });
         return result;
     }
 
-    public Symptom findById(int info_id){
-        Symptom result = new Symptom();
-        String sql = "SELECT * FROM symptom_info WHERE info_id = ?";
+    public Trip findById(int info_id){
+        Trip result = new Trip();
+        String sql = "SELECT * FROM trip_info WHERE info_id = ?";
         jdbcTemplate.query(sql, new Object[]{info_id}, new RowCallbackHandler() {
             @Override
             public void processRow(ResultSet rs) throws SQLException {
@@ -44,16 +46,17 @@ public class SymptomDAO {
                 result.setCatalog_id(rs.getInt("catalog_id"));
                 result.setInfo_timestamp(rs.getString("info_timestamp"));
                 result.setStart_time(rs.getString("start_time"));
-                result.setSymptom_type(rs.getString("symptom_type"));
-                result.setSymptom_detail(rs.getString("symptom_detail"));
+                result.setEnd_time(rs.getString("end_time"));
+                result.setTrip_destination(rs.getString("trip_destination"));
+                result.setTrip_detail(rs.getString("trip_detail"));
             }
         });
         return result;
     }
 
-    public boolean addInfo(Symptom symptom){
-        String sql = "INSERT INTO symptom_info(catalog_id,info_timestamp,start_time,symptom_type,symptom_detail) VALUES(?,?,?,?,?)";
-        jdbcTemplate.update(sql,symptom.getCatalog_id(),symptom.getInfo_timestamp(),symptom.getStart_time(),symptom.getSymptom_type(),symptom.getSymptom_detail());
+    public boolean addInfo(Trip trip){
+        String sql = "INSERT INTO trip_info(catalog_id,info_timestamp,start_time,end_time,trip_destination,trip_detail) VALUES(?,?,?,?,?,?)";
+        jdbcTemplate.update(sql,trip.getCatalog_id(),trip.getInfo_timestamp(),trip.getStart_time(),trip.getEnd_time(),trip.getTrip_destination(),trip.getTrip_detail());
         return true;
     }
 
@@ -62,7 +65,7 @@ public class SymptomDAO {
             return false;
         }
         else{
-            String sql = "DELETE FROM symptom_info WHERE info_id = ?";
+            String sql = "DELETE FROM trip_info WHERE info_id = ?";
             jdbcTemplate.update(sql,info_id);
             return true;
         }
