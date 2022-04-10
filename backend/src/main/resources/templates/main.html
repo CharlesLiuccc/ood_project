@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
   <title>COVID-19 Dashboard</title>
 
   <script src="../static/layui/layui.js"></script>
@@ -12,6 +13,14 @@
 
 </head>
 <body>
+<style>
+  body{
+
+    background-color: #3CF072
+
+  }
+
+</style>
 
 <div class="header">
   <div class="layui-container">
@@ -45,8 +54,6 @@
               <img src="//tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" class="layui-nav-img">
             </a>
             <dl class="layui-nav-child">
-              <dd><a href="">Your Profile</a></dd>
-              <dd><a href="">Settings</a></dd>
               <dd><a id="sign_out" href="">Sign out</a></dd>
             </dl>
           </li>
@@ -64,28 +71,28 @@
     <div class="layui-btn-container">
       <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
 
-        <a href="SymptomInfo.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">  Symptom  </a>
+        <a href="SymptomInfo" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">  Symptom  </a>
       </div>
       <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
-        <a href="TripsInfo.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Trips</a>
+        <a href="TripsInfo" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Trips</a>
 
       </div>
       <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
 
-        <a href="RelatedNews.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Related News</a>
+        <a href="RelatedNews" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Related News</a>
       </div>
 
       <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
-        <a href="MedicineInfo.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Medicine Info</a>
+        <a href="MedicineInfo" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Medicine Info</a>
       </div>
       <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
-        <a href="DoctorVisitInfo.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Doctor Visit Info</a>
+        <a href="DoctorVisitInfo" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Doctor Visit Info</a>
       </div>
       <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
-        <a href="TakeOutsInfo.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Take Outs Info</a>
+        <a href="TakeOutsInfo" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Take Outs Info</a>
       </div>
       <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
-        <a href="form.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">  Form  </a>
+        <a href="form" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">  Form  </a>
       </div>
     </div>
   </div>
