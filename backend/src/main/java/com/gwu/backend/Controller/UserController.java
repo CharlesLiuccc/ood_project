@@ -7,10 +7,7 @@ import com.gwu.backend.Model.Catalog;
 import com.gwu.backend.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
 
@@ -23,9 +20,11 @@ public class UserController {
     @Autowired
     public CatalogDAO catalogDAO;
 
-    @RequestMapping("/login")
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
     public String UserLogin(@RequestParam String user_mail,String user_pwd){
+        System.out.println(user_mail+user_pwd);
+
         User current_user=userDAO.findByMail(user_mail);
         //mail does not exist
         if(current_user.getUser_id()==-1){
@@ -36,7 +35,8 @@ public class UserController {
             return JSONObject.toJSONString(1);
         }
         //login success
-        return JSONObject.toJSONString(0)+",user_id:"+JSONObject.toJSONString(current_user.getUser_id());
+        Catalog current_catalog = catalogDAO.findByUser(current_user.getUser_id());
+        return JSONObject.toJSONString(0)+",user_id:"+JSONObject.toJSONString(current_user.getUser_id())+",user_name:"+JSONObject.toJSONString(current_user.getUser_name())+",catalog_id:"+JSONObject.toJSONString(current_catalog.getCatalog_id());
     }
 
     @RequestMapping("/register")

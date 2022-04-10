@@ -4,7 +4,7 @@ window.onload=function() {
     if (!isLogin()) {
         window.location.href = "/login";
     } else {
-        alert("f");
+        //alert("f");
         window.location.href = "/main";
     }
 }

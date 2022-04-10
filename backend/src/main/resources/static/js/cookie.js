@@ -26,7 +26,7 @@ function isLogin() {
     let cookie = getCookie("id");
     if (cookie.length === 0)
     {
-        alert("请先登录！");
+        //alert("请先登录！");
         return false;
     }
     return true;

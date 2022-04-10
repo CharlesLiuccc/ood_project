@@ -68,70 +68,26 @@
             <div class="center">
                 <div class="item">
                     <span class="icon icon-2"></span>
-                    <input type="text" name="username" lay-verify="required"  placeholder="请输入登录账号" maxlength="24"/>
+                    <input type="text" id="username" name="username" placeholder="请输入登录账号" maxlength="24"/>
                 </div>
 
                 <div class="item">
                     <span class="icon icon-3"></span>
-                    <input type="password" name="password" lay-verify="required"  placeholder="请输入密码" maxlength="20">
+                    <input type="password" id="password" name="password" placeholder="请输入密码" maxlength="20">
                     <span class="bind-password icon icon-4"></span>
                 </div>
 
             </div>
 
             <div class="layui-form-item" style="text-align:center; width:100%;height:100%;margin:0px;">
-                <button class="login-btn" lay-submit="" lay-filter="login">立即登录</button>
+                <button id="login-button" class="login-btn">立即登录</button>
             </div>
         </form>
     </div>
 </div>
 
 <script src="../static/layui/layui.js" charset="utf-8"></script>
-<script>
-    layui.use(['form','jquery'], function () {
-        var $ = layui.jquery,
-            form = layui.form,
-            layer = layui.layer;
+<script type="module" src="../static/js/user.js"></script>
 
-        // 登录过期的时候，跳出ifram框架
-        if (top.location != self.location) top.location = self.location;
-
-        $('.bind-password').on('click', function () {
-            if ($(this).hasClass('icon-5')) {
-                $(this).removeClass('icon-5');
-                $("input[name='password']").attr('type', 'password');
-            } else {
-                $(this).addClass('icon-5');
-                $("input[name='password']").attr('type', 'text');
-            }
-        });
-
-        $('.icon-nocheck').on('click', function () {
-            if ($(this).hasClass('icon-check')) {
-                $(this).removeClass('icon-check');
-            } else {
-                $(this).addClass('icon-check');
-            }
-        });
-
-        // 进行登录操作
-        form.on('submit(login)', function (data) {
-            data = data.field;
-            if (data.username == '') {
-                layer.msg('用户名不能为空');
-                return false;
-            }
-            if (data.password == '') {
-                layer.msg('密码不能为空');
-                return false;
-            }
-
-            layer.msg('登录成功', function () {
-                window.location = '../index.html';
-            });
-            return false;
-        });
-    });
-</script>
 </body>
 </html>
