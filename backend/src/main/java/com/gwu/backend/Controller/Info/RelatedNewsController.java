@@ -24,7 +24,8 @@ public class RelatedNewsController {
     public String getAllInfo(@RequestParam String catalog_id){
         ArrayList<RelatedNews> result = new ArrayList<>();
         result=relatedNewsDAO.findByCatalog(Integer.parseInt(catalog_id));
-        return JSONObject.toJSONString(result);
+        int amount = result.size();
+        return JSONObject.toJSONString(amount);
     }
 
     @RequestMapping("/addInfo")
