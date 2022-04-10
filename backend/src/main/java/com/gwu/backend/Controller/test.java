@@ -9,4 +9,12 @@ public class test {
     public String Hello(){
         return "index";
     }
+    @RequestMapping("main")
+    public String main(){
+        return "main";
+    }
+    @RequestMapping("login")
+    public String login(){
+        return "login";
+    }
 }

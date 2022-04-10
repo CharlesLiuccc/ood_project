@@ -28,7 +28,8 @@ public class SymptomController {
     public String getAllInfo(@RequestParam String catalog_id){
         ArrayList<Symptom> result = new ArrayList<>();
         result=symptomDAO.findByCatalog(Integer.parseInt(catalog_id));
-        return JSONObject.toJSONString(result);
+        int amount = result.size();
+        return JSONObject.toJSONString(amount);
     }
 
     @RequestMapping("/addInfo")

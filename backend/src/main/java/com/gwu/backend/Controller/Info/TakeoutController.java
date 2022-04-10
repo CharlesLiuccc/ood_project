@@ -27,7 +27,8 @@ public class TakeoutController {
     public String getAllInfo(@RequestParam String catalog_id){
         ArrayList<Takeout> result = new ArrayList<>();
         result=takeoutDAO.findByCatalog(Integer.parseInt(catalog_id));
-        return JSONObject.toJSONString(result);
+        int amount = result.size();
+        return JSONObject.toJSONString(amount);
     }
 
     @RequestMapping("/addInfo")

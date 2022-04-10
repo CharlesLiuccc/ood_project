@@ -31,8 +31,8 @@ public class DoctorVisitController {
     public String getAllInfo(@RequestParam String catalog_id){
         ArrayList<DoctorVisit> result = new ArrayList<>();
         result = doctorVisitDAO.findByCatalog(Integer.parseInt(catalog_id));
-        //int amount = result.size();
-        return JSONObject.toJSONString(result);
+        int amount = result.size();
+        return JSONObject.toJSONString(amount);
     }
 
     @RequestMapping("/addInfo")
