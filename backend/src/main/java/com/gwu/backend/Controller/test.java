@@ -17,4 +17,8 @@ public class test {
     public String login(){
         return "login";
     }
+    @RequestMapping("SymptomInfo")
+    public String sympotomInfo(){
+        return "SymptomInfo";
+    }
 }

@@ -1,7 +1,7 @@
 import {setCookie, getCookie, isLogin} from "./cookie.js";
 window.onload=function (){
     if(isLogin()){
-        window.location.href("/main");
+        window.location.replace("main");
     }
     let button = document.getElementById("login-button");
     button.addEventListener('click',login);
