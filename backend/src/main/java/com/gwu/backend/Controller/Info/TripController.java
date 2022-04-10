@@ -21,7 +21,7 @@ public class TripController {
     @Autowired
     CatalogDAO catalogDAO;
 
-    @RequestMapping("/getAllInfo")
+    @RequestMapping(value = "/getAllInfo",method = RequestMethod.POST)
     public String getAllInfo(@RequestParam String catalog_id){
         ArrayList<Trip> result = new ArrayList<>();
         result=tripDAO.findByCatalog(Integer.parseInt(catalog_id));
@@ -29,7 +29,7 @@ public class TripController {
         return JSONObject.toJSONString(amount);
     }
 
-    @RequestMapping("/addInfo")
+    @RequestMapping(value = "/addInfo",method = RequestMethod.POST)
     public String addInfo(@RequestParam String catalog_id,String start,String end,String place,String detail){
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         Trip current_trip = new Trip(Integer.parseInt(catalog_id),timestamp.toString(),start,end,place,detail);
@@ -52,7 +52,7 @@ public class TripController {
         }
     }
 
-    @RequestMapping("/deleteInfo")
+    @RequestMapping(value = "/deleteInfo",method = RequestMethod.POST)
     @ResponseBody
     public String deleteInfo(@RequestParam String info_id){
         Trip current_trip = tripDAO.findById(Integer.parseInt(info_id));

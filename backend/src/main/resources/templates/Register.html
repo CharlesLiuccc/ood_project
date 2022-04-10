@@ -8,6 +8,7 @@
 </head>
 
 <script src="../static/layui/layui.js"></script>
+<script type="module" src="../static/js/register.js"></script>
 <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
 
 <body>
@@ -24,64 +25,47 @@
             <legend>Account Register</legend>
         </fieldset>
         <!-- 单行输入-->
-
-        <div class="layui-form" action="">
+        <form class="layui-form" action="">
             <div class="layui-form-item">
                 <label class="layui-form-label">E-mail</label>
                 <div class="layui-input-block">
                     <input type="text" name="email" id="email" lay-verify="title" autocomplete="off" placeholder="E-mail" class="layui-input">
                 </div>
             </div>
-        </div>
 
-        <div class="layui-form" action="">
             <div class="layui-form-item">
                 <label class="layui-form-label">Account<br>Name</label>
                 <div class="layui-input-block">
-                    <input type="text" name="account_name" id="account_name" lay-verify="title" autocomplete="off" placeholder="Account Name" class="layui-input">
+                    <input type="text" name="name" id="name" lay-verify="title" autocomplete="off" placeholder="Account Name" class="layui-input">
                 </div>
             </div>
-        </div>
 
-        <div class="layui-form" action="">
             <div class="layui-form-item">
                 <label class="layui-form-label">Password</label>
                 <div class="layui-input-block">
                     <input type="text" name="password1" id="password1" lay-verify="title" autocomplete="off" placeholder="Enter Password" class="layui-input">
                 </div>
             </div>
-        </div>
 
-        <div class="layui-form" action="">
             <div class="layui-form-item">
                 <label class="layui-form-label">Retype Password</label>
                 <div class="layui-input-block">
                     <input type="text" name="password2" id = "password2"lay-verify="title" autocomplete="off" placeholder="Re-enter Passoword" class="layui-input">
                 </div>
             </div>
-        </div>
-
-
-
-
 
         <!-- 单向选择框-->
         <!-- 此处回传 symptom_name
          返回字符串
         -->
-
-        <form class="layui-form" action="">
-
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <button class="layui-btn" lay-submit="" lay-filter="demo1">Submit</button>
+                    <button id="register-button" class="layui-btn" lay-submit="" lay-filter="demo1">Submit</button>
                     <button type="reset" class="layui-btn layui-btn-primary">Reset</button>
                 </div>
             </div>
 
         </form>
-
-
     </div>
     </div>
 
@@ -99,25 +83,52 @@
         form.render();
 
         //创建一个编辑器
-        var editIndex = layedit.build('LAY_demo_editor');
+        //var editIndex = layedit.build('LAY_demo_editor');
 
         //监听提交
         form.on('submit(demo1)', function (data) {
-                    var n1 = document.getElementById("password1");
-                    var n2 = document.getElementById("password2");
-
-                            if (n1.value == n2.value){
-                                return true;
-                            }
-
-                    alert("Retype Password not match");
+            // let user_mail = document.getElementById("email");
+            // let user_name = document.getElementById("name");
+            //         var n1 = document.getElementById("password1");
+            //         var n2 = document.getElementById("password2");
+            //                 if (n1.value == n2.value){
+            //                     var ajaxTimeout = $.ajax({
+            //                         url : "http://localhost:8080/user/register",
+            //                         type : "post", // 提交方式
+            //                         contentType: "application/json;charset=UTF-8", //发送数据的格式
+            //                         timeout : 10000,//请求超时时间
+            //                         data : JSON.stringify(data.field),
+            //                         dataType : "json",
+            //                         success : function(data) {
+            //                             layer.close(index);
+            //                             if(data.code == 0){
+            //                                 layer.msg(data.message);
+            //                             }else if(data.code == 500){
+            //                                 layer.msg(data.message);
+            //                             }
+            //                         },error : function(XMLHttpResponse, textStatus, errorThrown) {
+            //                             layer.close(index);
+            //                             console.log("1 异步调用返回失败,XMLHttpResponse.readyState:"+XMLHttpResponse.readyState);
+            //                             console.log("2 异步调用返回失败,XMLHttpResponse.status:"+XMLHttpResponse.status);
+            //                             console.log("3 异步调用返回失败,textStatus:"+textStatus);
+            //                             console.log("4 异步调用返回失败,errorThrown:"+errorThrown);
+            //                             console.log(XMLHttpResponse);
+            //                             layer.msg("服务器请求错误！");
+            //                             return;
+            //                         },complete : function(XMLHttpRequest,status){
+            //                             //请求完成后最终执行参数  　　　　
+            //                             if(status=='timeout'){
+            //                                 //停止请求　　　　
+            //                                 ajaxTimeout.abort();
+            //                                 layer.msg("服务器请求超时！请稍后重试");
+            //                             }
+            //                         }
+            //                     });
+            //                 }
+            //
+            //                 else{alert("Retype Password not match");}
                     return false;
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            })
-            return false;
         });
-
     });
 </script>
 </body>

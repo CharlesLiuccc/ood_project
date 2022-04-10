@@ -13,14 +13,14 @@ import java.util.ArrayList;
 
 @RestController
 @CrossOrigin(maxAge = 3600,origins = "*")
-@RequestMapping("/medicine")
+@RequestMapping(value = "/medicine")
 public class MedicineController {
     @Autowired
     MedicineDAO medicineDAO;
     @Autowired
     CatalogDAO catalogDAO;
 
-    @RequestMapping("/getAllInfo")
+    @RequestMapping(value = "/getAllInfo",method = RequestMethod.POST)
     public String getAllInfo(@RequestParam String catalog_id){
         ArrayList<Medicine> result = new ArrayList<>();
         result=medicineDAO.findByCatalog(Integer.parseInt(catalog_id));
@@ -28,7 +28,7 @@ public class MedicineController {
         return JSONObject.toJSONString(amount);
     }
 
-    @RequestMapping("/addInfo")
+    @RequestMapping(value = "/addInfo",method = RequestMethod.POST)
     public String addInfo(@RequestParam String catalog_id,String name,String frequency,String dosage,String detail){
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         Medicine current_medicine = new Medicine(Integer.parseInt(catalog_id),timestamp.toString(),name,frequency,dosage,detail);
@@ -51,7 +51,7 @@ public class MedicineController {
         }
     }
 
-    @RequestMapping("/deleteInfo")
+    @RequestMapping(value = "/deleteInfo",method = RequestMethod.POST)
     @ResponseBody
     public String deleteInfo(@RequestParam String info_id){
         Medicine current_medicine = medicineDAO.findById(Integer.parseInt(info_id));

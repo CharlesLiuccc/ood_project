@@ -20,7 +20,7 @@ public class RelatedNewsController {
     @Autowired
     CatalogDAO catalogDAO;
 
-    @RequestMapping("/getAllInfo")
+    @RequestMapping(value = "/getAllInfo",method = RequestMethod.POST)
     public String getAllInfo(@RequestParam String catalog_id){
         ArrayList<RelatedNews> result = new ArrayList<>();
         result=relatedNewsDAO.findByCatalog(Integer.parseInt(catalog_id));
@@ -28,7 +28,7 @@ public class RelatedNewsController {
         return JSONObject.toJSONString(amount);
     }
 
-    @RequestMapping("/addInfo")
+    @RequestMapping(value = "/addInfo",method = RequestMethod.POST)
     public String addInfo(@RequestParam String catalog_id,String date,String detail){
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         RelatedNews current_news = new RelatedNews(Integer.parseInt(catalog_id),timestamp.toString(),date,detail);
@@ -51,7 +51,7 @@ public class RelatedNewsController {
         }
     }
 
-    @RequestMapping("/deleteInfo")
+    @RequestMapping(value = "/deleteInfo",method = RequestMethod.POST)
     public String deleteInfo(@RequestParam String info_id){
         RelatedNews current_news = relatedNewsDAO.findById(Integer.parseInt(info_id));
         if(current_news.getCatalog_id()==-1){

@@ -7,11 +7,9 @@ import com.gwu.backend.DAO.Info.DoctorVisitDAO;
 import com.gwu.backend.Model.Catalog;
 import com.gwu.backend.Model.Info.DoctorVisit;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -26,7 +24,7 @@ public class DoctorVisitController {
     @Autowired
     CatalogDAO catalogDAO;
 
-    @RequestMapping("/getAllInfo")
+    @RequestMapping(value = "/getAllInfo", method = RequestMethod.POST)
     @ResponseBody
     public String getAllInfo(@RequestParam String catalog_id){
         ArrayList<DoctorVisit> result = new ArrayList<>();
@@ -35,7 +33,7 @@ public class DoctorVisitController {
         return JSONObject.toJSONString(amount);
     }
 
-    @RequestMapping("/addInfo")
+    @RequestMapping(value = "/addInfo", method = RequestMethod.POST)
     @ResponseBody
     public String addInfo(@RequestParam String catalog_id,String name,String date,String detail){
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -59,7 +57,7 @@ public class DoctorVisitController {
         }
     }
 
-    @RequestMapping("/deleteInfo")
+    @RequestMapping(value = "/deleteInfo",method = RequestMethod.POST)
     @ResponseBody
     public String deleteInfo(@RequestParam String info_id){
         DoctorVisit current_visit = doctorVisitDAO.findById(Integer.parseInt(info_id));

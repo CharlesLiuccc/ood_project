@@ -39,7 +39,7 @@ public class UserController {
         return JSONObject.toJSONString(0)+",user_id:"+JSONObject.toJSONString(current_user.getUser_id())+",user_name:"+JSONObject.toJSONString(current_user.getUser_name())+",catalog_id:"+JSONObject.toJSONString(current_catalog.getCatalog_id());
     }
 
-    @RequestMapping("/register")
+    @RequestMapping(value = "/register",method = RequestMethod.POST)
     @ResponseBody
     public String UserRegister(@RequestParam String user_mail,String user_name,String user_pwd){
         if(userDAO.findByMail(user_mail).getUser_id()==-1){
@@ -68,7 +68,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping("/changePwd")
+    @RequestMapping(value = "/changePwd",method = RequestMethod.POST)
     @ResponseBody
     public String ChangePassword(@RequestParam String user_id, String old_pwd,String new_pwd){
         User current_user = userDAO.findByID(Integer.parseInt(user_id));
@@ -87,7 +87,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping("/changeInfo")
+    @RequestMapping(value = "/changeInfo",method = RequestMethod.POST)
     @ResponseBody
     public String ChangeUserInfo(@RequestParam String user_id, String old_pwd,String user_mail,String user_name){
         User current_user = userDAO.findByID(Integer.parseInt(user_id));
@@ -107,7 +107,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping("/catalog")
+    @RequestMapping(value = "/catalog",method = RequestMethod.POST)
     @ResponseBody
     public String getCatalog_id(@RequestParam String user_id){
         Catalog current_catalog = catalogDAO.findByUser(Integer.parseInt(user_id));

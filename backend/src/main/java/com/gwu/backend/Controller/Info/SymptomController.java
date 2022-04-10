@@ -7,10 +7,7 @@ import com.gwu.backend.DAO.Info.SymptomDAO;
 import com.gwu.backend.Model.Catalog;
 import com.gwu.backend.Model.Info.Symptom;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -24,7 +21,7 @@ public class SymptomController {
     @Autowired
     CatalogDAO catalogDAO;
 
-    @RequestMapping("/getAllInfo")
+    @RequestMapping(value = "/getAllInfo",method = RequestMethod.POST)
     public String getAllInfo(@RequestParam String catalog_id){
         ArrayList<Symptom> result = new ArrayList<>();
         result=symptomDAO.findByCatalog(Integer.parseInt(catalog_id));
@@ -32,7 +29,7 @@ public class SymptomController {
         return JSONObject.toJSONString(amount);
     }
 
-    @RequestMapping("/addInfo")
+    @RequestMapping(value = "/addInfo",method = RequestMethod.POST)
     public String addInfo(@RequestParam String catalog_id,String time,String type,String detail){
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         Symptom current_symptom = new Symptom(Integer.parseInt(catalog_id),timestamp.toString(),time,type,detail);
@@ -55,7 +52,7 @@ public class SymptomController {
         }
     }
 
-    @RequestMapping("/deleteInfo")
+    @RequestMapping(value = "/deleteInfo",method = RequestMethod.POST)
     public String deleteInfo(@RequestParam String info_id){
         Symptom current_symptom = symptomDAO.findById(Integer.parseInt(info_id));
         if(current_symptom.getCatalog_id()==-1){
