@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>COVID-19 Dashboard</title>
+
+  <script src="../static/layui/layui.js"></script>
+  <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
+
+</head>
+<body>
+<div class="header">
+  <div class="layui-container">
+
+    <div class="nav">
+      <ul class="layui-nav ">
+
+        <li class="layui-nav-item "><a href="">COVID-19</a>
+
+        <li class="layui-nav-item ">
+          <a href="javascript:;">
+            <i class="layui-icon layui-icon-more-vertical"></i>
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="SymptomInfo.html">Symptom</a></dd>
+            <dd><a href="TripsInfo.html">Trips</a></dd>
+            <dd><a href="RelatedNews.html">Related News</a></dd>
+            <dd><a href="MedicineInfo.html">Medicine Info</a></dd>
+            <dd><a href="DoctorVisitInfo.html">Doctor Visit Info</a></dd>
+            <dd><a href="TakeOutsInfo.html">Take Outs Info</a></dd>
+            <dd><a href="login.html">Login</a></dd>
+            <dd><a href="form.html">form</a></dd>
+          </dl>
+        </li>
+        </li>
+
+
+        <ul class="layui-nav layui-layout-right">
+          <li class="layui-nav-item  layui-show-md-inline-block">
+            <a href="javascript:;">
+              <img src="//tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" class="layui-nav-img">
+              User
+            </a>
+            <dl class="layui-nav-child">
+              <dd><a href="">Your Profile</a></dd>
+              <dd><a href="">Settings</a></dd>
+              <dd><a href="">Sign out</a></dd>
+            </dl>
+          </li>
+
+        </ul>
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="layui-container main">
+  <div style="padding: 15px;"></div>
+  <div class="layui-row layui-col-space10">
+    <div class="layui-btn-container">
+      <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
+
+        <a href="SymptomInfo.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">  Symptom  </a>
+      </div>
+      <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
+        <a href="TripsInfo.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Trips</a>
+
+      </div>
+      <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
+
+        <a href="RelatedNews.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Related News</a>
+      </div>
+
+      <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
+        <a href="MedicineInfo.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Medicine Info</a>
+      </div>
+      <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
+        <a href="DoctorVisitInfo.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Doctor Visit Info</a>
+      </div>
+      <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
+        <a href="TakeOutsInfo.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Take Outs Info</a>
+      </div>
+      <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
+        <a href="form.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">  Form  </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--数据表-->
+<table  class="layui-hide" id="test" lay-filter="test"></table>
+</div>
+<div>
+</div>
+</div>
+</div>
+
+<div class="layui-footer">
+
+</div>
+</div>
+
+
+<script src="./layui/layui.js"></script>
+<script>
+  //JS
+  layui.use(['element', 'layer', 'util'], function(){
+    var element = layui.element
+            ,layer = layui.layer
+            ,util = layui.util
+            ,$ = layui.$;});
+
+</script>
+
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="layui.js"></script>
+<script>
+  //JavaScript代码区域
+  layui.use(['element', 'layer'], function () {
+    var element = layui.element;
+    var layer = layui.layer;
+
+  });
+  $(".mobile-icon").click(function () {
+    $(".nav").toggleClass('layui-show');
+  });
+</script>
+
+</body>
+</html>
