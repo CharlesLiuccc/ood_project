@@ -41,7 +41,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">Destination</label>
             <div class="layui-input-block">
-                <select name="destination" lay-filter="aihao">
+                <select name="destination" id="destination" lay-filter="aihao">
 
                     <option value="Foggy_Button" selected="">Foggy Button</option>
                     <option value="Downtown">Downtown</option>
@@ -62,7 +62,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">Start Time</label>
                 <div class="layui-input-block">
-                    <select name="start_time" lay-filter="aihao">
+                    <select name="trips_start_time" id="trips_start_time" lay-filter="aihao">
 
                         <option value="0">0:00-7:00</option>
                         <option value="1">7:00-12:00</option>
@@ -80,7 +80,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">End Time</label>
                 <div class="layui-input-block">
-                    <select name="end_time" lay-filter="aihao">
+                    <select name="trips_end_time" id="trips_end_time" lay-filter="aihao">
 
                         <option value="0">0:00-7:00</option>
                         <option value="1">7:00-12:00</option>
@@ -121,7 +121,7 @@
                 <textarea placeholder="Key in details" class="layui-textarea"></textarea>
             </div>
         </div>
-<!-- 以下无关 -->
+
             <div class="layui-form-item">
                 <div class="layui-input-block">
                     <button class="layui-btn" lay-submit="" lay-filter="demo1">Submit</button>

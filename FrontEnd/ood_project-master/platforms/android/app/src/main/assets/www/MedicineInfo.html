@@ -27,7 +27,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">Medicine<br>Name</label>
                 <div class="layui-input-block">
-                    <input type="text" name="medicine_name" lay-verify="title" autocomplete="off" placeholder="Enter Medicine Name" class="layui-input">
+                    <input type="text" name="medicine_name" id="medicine_name" lay-verify="title" autocomplete="off" placeholder="Enter Medicine Name" class="layui-input">
                 </div>
             </div>
         <!-- 此处返回频率-->
@@ -35,7 +35,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">Medicine<br>Frequency</label>
                     <div class="layui-input-block">
-                        <input type="text" name="medicine_frequency" lay-verify="title" autocomplete="off" placeholder="Enter Medicine Frequency" class="layui-input">
+                        <input type="text" name="medicine_frequency" id="medicine_frequency" lay-verify="title" autocomplete="off" placeholder="Enter Medicine Frequency" class="layui-input">
                     </div>
                 </div>
        <!-- Medicine Dosage-->
@@ -43,7 +43,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">Medicine<br>Dosage</label>
                         <div class="layui-input-block">
-                            <input type="text" name="medicine_dosage" lay-verify="title" autocomplete="off" placeholder="Enter Medicine Dosage" class="layui-input">
+                            <input type="text" name="medicine_dosage" id="medicine_dosage" lay-verify="title" autocomplete="off" placeholder="Enter Medicine Dosage" class="layui-input">
                         </div>
                     </div>
                 <!-- 不回传 -->
@@ -53,11 +53,11 @@
                             <textarea placeholder="Key in details" class="layui-textarea"></textarea>
                         </div>
                     </div>
-
+                <!-- vaccine 开关-->
                     <div class="layui-form-item">
                         <label class="layui-form-label">Fully<br>Vaccinated?</label>
                         <div class="layui-input-block">
-                            <input type="checkbox" name="Vaccinated" lay-skin="switch">
+                            <input type="checkbox" name="Vaccinated" id = "Vaccinated" lay-skin="switch">
                         </div>
                     </div>
                     <div class="layui-form-item">

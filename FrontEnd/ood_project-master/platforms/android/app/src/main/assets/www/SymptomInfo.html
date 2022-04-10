@@ -41,7 +41,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">Symptom<br>Name</label>
             <div class="layui-input-block">
-                <select name="symptom_name" lay-filter="aihao">
+                <select name="symptom_name" id="symptom_name" lay-filter="aihao">
 
                     <option value="cough" selected="">Cough</option>
                     <option value="fever_or_chills">Fever or chills</option>
@@ -57,11 +57,11 @@
             </div>
         </div>
 
-                <!-- 回传start_time-->
+                <!-- 返回 symptom_start_date-->
                 <div class="layui-inline">
                     <label class="layui-form-label">Start Date</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="start_time" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                        <input type="text" name="symptom_start_date" id="symptom_start_date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
                     </div>
                 </div>
 
