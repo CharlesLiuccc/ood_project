@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>后台管理-登陆</title>
+    <title>Login Page</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -68,12 +68,12 @@
             <div class="center">
                 <div class="item">
                     <span class="icon icon-2"></span>
-                    <input type="text" name="username" lay-verify="required"  placeholder="请输入登录账号" maxlength="24"/>
+                    <input type="text" name="username" lay-verify="required"  placeholder="Please input login account" maxlength="24"/>
                 </div>
 
                 <div class="item">
                     <span class="icon icon-3"></span>
-                    <input type="password" name="password" lay-verify="required"  placeholder="请输入密码" maxlength="20">
+                    <input type="password" name="password" lay-verify="required"  placeholder="Please input password" maxlength="20">
                     <span class="bind-password icon icon-4"></span>
                 </div>
 
@@ -120,23 +120,23 @@
             }
         });
 
-        // 进行登录操作
+        // Login operations
         form.on('submit(login)', function (data) {
             data = data.field;
             if (data.username == '') {
-                layer.msg('用户名不能为空');
+                layer.msg('User name cannot be empty!');
                 return false;
             }
             if (data.password == '') {
-                layer.msg('密码不能为空');
+                layer.msg('Password cannot be empty!');
                 return false;
             }
             if (data.captcha == '') {
-                layer.msg('验证码不能为空');
+                layer.msg('Verification code cannot be empty!');
                 return false;
             }
-            layer.msg('登录成功', function () {
-                window.location = '../index.html';
+            layer.msg('Login Success!', function () {
+                window.location = '../main.html';
             });
             return false;
         });
