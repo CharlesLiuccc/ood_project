@@ -9,6 +9,16 @@
   <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
 
 </head>
+<style>
+  body{
+
+    background-color: #3CF072
+
+  }
+
+</style>
+<!--background-color: #F5EB2B-->
+<!--background-color: #F51E09-->
 <body>
 <div class="header">
   <div class="layui-container">
@@ -23,14 +33,13 @@
             <i class="layui-icon layui-icon-more-vertical"></i>
           </a>
           <dl class="layui-nav-child">
-            <dd><a href="./../platforms/android/app/src/main/assets/www/SymptomInfo.html">Symptom</a></dd>
-            <dd><a href="./../platforms/android/app/src/main/assets/www/TripsInfo.html">Trips</a></dd>
-            <dd><a href="./../platforms/android/app/src/main/assets/www/RelatedNews.html">Related News</a></dd>
-            <dd><a href="./../platforms/android/app/src/main/assets/www/MedicineInfo.html">Medicine Info</a></dd>
-            <dd><a href="./../platforms/android/app/src/main/assets/www/DoctorVisitInfo.html">Doctor Visit Info</a></dd>
-            <dd><a href="./../platforms/android/app/src/main/assets/www/TakeOutsInfo.html">Take Outs Info</a></dd>
-            <dd><a href="./../platforms/android/app/src/main/assets/www/login.html">Login</a></dd>
-            <dd><a href="./../platforms/android/app/src/main/assets/www/form.html">form</a></dd>
+            <dd><a href="SymptomInfo.html">Symptom</a></dd>
+            <dd><a href="TripsInfo.html">Trips</a></dd>
+            <dd><a href="RelatedNews.html">Related News</a></dd>
+            <dd><a href="MedicineInfo.html">Medicine Info</a></dd>
+            <dd><a href="DoctorVisitInfo.html">Doctor Visit Info</a></dd>
+            <dd><a href="TakeOutsInfo.html">Take Outs Info</a></dd>
+            <dd><a href="form.html">Symptom Test Form</a></dd>
           </dl>
         </li>
         </li>
@@ -38,13 +47,11 @@
 
         <ul class="layui-nav layui-layout-right">
           <li class="layui-nav-item  layui-show-md-inline-block">
-            <a href="javascript:;">
+            <a id = "name" href="javascript:;">
               <img src="//tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" class="layui-nav-img">
               User
             </a>
             <dl class="layui-nav-child">
-              <dd><a href="">Your Profile</a></dd>
-              <dd><a href="">Settings</a></dd>
               <dd><a href="">Sign out</a></dd>
             </dl>
           </li>
@@ -63,34 +70,34 @@
     <div class="layui-btn-container">
       <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
 
-        <a href="./../platforms/android/app/src/main/assets/www/SymptomInfo.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">  Symptom  </a>
+        <a href="SymptomInfo.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">  Symptom  </a>
       </div>
       <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
-        <a href="./../platforms/android/app/src/main/assets/www/TripsInfo.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Trips</a>
+        <a href="TripsInfo.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Trips</a>
 
       </div>
       <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
 
-        <a href="./../platforms/android/app/src/main/assets/www/RelatedNews.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Related News</a>
+        <a href="RelatedNews.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Related News</a>
       </div>
 
       <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
-        <a href="./../platforms/android/app/src/main/assets/www/MedicineInfo.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Medicine Info</a>
+        <a href="MedicineInfo.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Medicine Info</a>
       </div>
       <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
-        <a href="./../platforms/android/app/src/main/assets/www/DoctorVisitInfo.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Doctor Visit Info</a>
+        <a href="DoctorVisitInfo.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Doctor Visit Info</a>
       </div>
       <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
-        <a href="./../platforms/android/app/src/main/assets/www/TakeOutsInfo.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Take Outs Info</a>
+        <a href="TakeOutsInfo.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">Take Outs Info</a>
       </div>
       <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
-        <a href="../platforms/android/app/src/main/assets/www/form.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid">  Form  </a>
+        <a href="form.html" class="layui-btn layui-btn-lg layui-btn-normal layui-btn-fluid"> Symptom Test Form  </a>
       </div>
     </div>
   </div>
 </div>
 
-<!--数据表-->
+<!--Table-->
 <table  class="layui-hide" id="test" lay-filter="test"></table>
 </div>
 <div>
@@ -118,7 +125,7 @@
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script src="layui.js"></script>
 <script>
-  //JavaScript代码区域
+  //JavaScript
   layui.use(['element', 'layer'], function () {
     var element = layui.element;
     var layer = layui.layer;
