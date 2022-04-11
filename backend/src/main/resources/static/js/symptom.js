@@ -1,9 +1,5 @@
 import {setCookie, getCookie, isLogin} from "./cookie.js";
-
 window.onload=function (){
-    if(!isLogin()){
-        window.location.href="login";
-    }
     getSubmittedSymptomNum();
     let button = document.getElementById("submit-symptomInfo");
     button.addEventListener('click',sendInfo);
@@ -46,14 +42,12 @@ function sendInfo(){
                         alert("database error, please contact the administrator");
                     }
                     else{
-                        alert("submit succeed!");
                         window.location.href="main";
+                        alert("submit succeed!");
                     }
-
                 } else
                     alert("please check your net work: " + xhr.responseText);
             }
-
         };
         xhr.open("post", "http://localhost:8080/symptom/addInfo", false);
         xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");

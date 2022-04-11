@@ -15,17 +15,11 @@
 <div class="layuimini-container layuimini-page-anim">
     <div class="layuimini-main">
 
-       <!--
-       <blockquote class="layui-elem-quote layui-text">
-           鉴于小伙伴的普遍反馈，先温馨提醒两个常见“问题”：1. <a href="/doc/base/faq.html#form" target="_blank">为什么select/checkbox/radio没显示？</a> 2. <a href="/doc/modules/form.html#render" target="_blank">动态添加的表单元素如何更新？</a>
-        </blockquote>
-        -->
-
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
             <legend>Medicine</legend>
         </fieldset>
-        <!-- 单行输入-->
-        <!--此处仅返回药品名称的字符串 -->
+
+        <!--Medicine name -->
         <div class="layui-form" action="">
             <div class="layui-form-item">
                 <label class="layui-form-label">Medicine<br>Name</label>
@@ -33,7 +27,7 @@
                     <input type="text" name="medicine_name" id="medicine_name" lay-verify="title" autocomplete="off" placeholder="Enter Medicine Name" class="layui-input">
                 </div>
             </div>
-        <!-- 此处返回频率-->
+        <!-- Medicine taken frequency-->
             <div class="layui-form" action="">
                 <div class="layui-form-item">
                     <label class="layui-form-label">Medicine<br>Frequency</label>
@@ -49,14 +43,14 @@
                             <input type="text" name="medicine_dosage" id="medicine_dosage" lay-verify="title" autocomplete="off" placeholder="Enter Medicine Dosage" class="layui-input">
                         </div>
                     </div>
-                <!-- 不回传 -->
+                <!-- Medicine Details -->
                     <div class="layui-form-item layui-form-text">
                         <label class="layui-form-label">Details</label>
                         <div class="layui-input-block">
                             <textarea placeholder="Key in details" class="layui-textarea"></textarea>
                         </div>
                     </div>
-                <!-- vaccine 开关-->
+                <!-- vaccine switcher-->
                     <div class="layui-form-item">
                         <label class="layui-form-label">Fully<br>Vaccinated?</label>
                         <div class="layui-input-block">

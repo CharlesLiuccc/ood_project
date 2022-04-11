@@ -21,6 +21,7 @@ function getSubmittedTripNum(){
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send("catalog_id=" + getCookie("catalog_id"));
 }
+
 function trip() {
     let destination = document.getElementById("destination").value;
     let trips_start_time = document.getElementById("trips_start_time").value;
@@ -38,11 +39,9 @@ function trip() {
                 } else {
                     window.location.href="main";
                     alert("submit succeed!");
-
                 }
-
             } else
-                alert("please check your net work" + "login error" + xhr.responseText);
+                alert("please check your net work" + xhr.responseText);
         }
 
     };
