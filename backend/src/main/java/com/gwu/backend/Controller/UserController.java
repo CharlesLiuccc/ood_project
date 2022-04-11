@@ -120,4 +120,11 @@ public class UserController {
                     +",amount:"+JSONObject.toJSONString(current_catalog.getAmount());
         }
     }
+
+    @RequestMapping(value = "/clearRisk",method = RequestMethod.POST)
+    @ResponseBody
+    public String clearRisk(@RequestParam String catalog_id){
+        catalogDAO.updateRisk(Integer.parseInt(catalog_id),0);
+        return JSONObject.toJSONString(0);
+    }
 }

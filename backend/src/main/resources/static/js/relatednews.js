@@ -1,9 +1,28 @@
 import {setCookie, getCookie, isLogin} from "./cookie.js";
 window.onload=function (){
+    getSubmittedNewsNum();
     let button = document.getElementById("relatednews-button");
     button.addEventListener('click',relatednews);
 }
 
+
+function getSubmittedNewsNum(){
+    let xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("microsoft.XMLHttp");
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                let res = parseInt(xhr.responseText);
+                let num = document.getElementById("submitted-news");
+                num.innerText=res+" cases submitted";
+            } else
+                alert("please check your net work: " + xhr.responseText);
+        }
+
+    };
+    xhr.open("post", "http://localhost:8080/news/getAllInfo", false);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xhr.send("catalog_id=" + getCookie("catalog_id"));
+}
 function relatednews(){
     let news_detail = document.getElementById("news_detail").value;
     let news_amount = document.getElementById("news_amount").value;
