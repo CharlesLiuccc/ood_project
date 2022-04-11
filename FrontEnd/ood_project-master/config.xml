@@ -27,7 +27,7 @@
     </author>
 
     <!-- https://s.apache.org/cdv-content-config -->
-    <content src="index.html" />
+    <content src="login.html" />
 
     <!-- To allow connections to other resources, you must explicitly permit them using `access` tags. -->
     <!-- https://s.apache.org/cdv-network-request-access -->
