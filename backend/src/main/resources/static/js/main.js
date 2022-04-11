@@ -18,7 +18,7 @@ function logout(){
     delCookie("id");
     delCookie("name");
     delCookie("catalog_id");
-    window.location.replace("http:localhost:8080/login");
+    window.location.href="login";
 }
 
 function getRisk(){
