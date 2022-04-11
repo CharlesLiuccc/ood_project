@@ -8,6 +8,7 @@
 </head>
 
 <script src="../static/layui/layui.js"></script>
+<script type="module" src="../static/js/symptom.js"></script>
 <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
 
 <body>
@@ -19,7 +20,6 @@
            鉴于小伙伴的普遍反馈，先温馨提醒两个常见“问题”：1. <a href="/doc/base/faq.html#form" target="_blank">为什么select/checkbox/radio没显示？</a> 2. <a href="/doc/modules/form.html#render" target="_blank">动态添加的表单元素如何更新？</a>
         </blockquote>
         -->
-
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
             <legend>Symptom</legend>
         </fieldset>
@@ -71,66 +71,27 @@
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">Details</label>
             <div class="layui-input-block">
-                <textarea placeholder="Key in details" class="layui-textarea"></textarea>
+                <textarea id="symptom_detail" placeholder="Key in details" class="layui-textarea"></textarea>
             </div>
         </div>
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <button class="layui-btn" lay-submit="" lay-filter="demo1">Submit</button>
+                    <button id="submit-symptomInfo" class="layui-btn" lay-submit="" lay-filter="demo1">Submit</button>
                     <button type="reset" class="layui-btn layui-btn-primary">Reset</button>
                 </div>
             </div>
-
         </form>
-
     </div>
     </div>
 <script>
     layui.use(['form', 'layedit', 'laydate'], function () {
         var form = layui.form
             , layer = layui.layer
-            , layedit = layui.layedit
-            , laydate = layui.laydate;
 
         /**
          * 初始化表单，要加上，不然刷新部分组件可能会不加载
          */
         form.render();
-
-        //日期
-        laydate.render({
-            elem: '#date'
-        });
-        laydate.render({
-            elem: '#date1'
-        });
-
-        //创建一个编辑器
-        var editIndex = layedit.build('LAY_demo_editor');
-
-        //自定义验证规则
-        form.verify({
-            title: function (value) {
-                if (value.length < 5) {
-                    return '标题至少得5个字符啊';
-                }
-            }
-            , pass: [
-                /^[\S]{6,12}$/
-                , '密码必须6到12位，且不能出现空格'
-            ]
-            , content: function (value) {
-                layedit.sync(editIndex);
-            }
-        });
-
-        //监听指定开关
-        form.on('switch(switchTest)', function (data) {
-            layer.msg('开关checked：' + (this.checked ? 'true' : 'false'), {
-                offset: '6px'
-            });
-            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
-        });
 
         //监听提交
         form.on('submit(demo1)', function (data) {
@@ -139,17 +100,6 @@
             })
             return false;
         });
-
-        //表单初始赋值
-        form.val('example', {
-            "username": "贤心" // "name": "value"
-            , "password": "123456"
-            , "interest": 1
-            , "like[write]": true //复选框选中状态
-            , "close": true //开关状态
-            , "sex": "女"
-            , "desc": "我爱 layui"
-        })
     });
 </script>
 </body>
