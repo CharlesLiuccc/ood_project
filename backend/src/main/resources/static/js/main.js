@@ -35,6 +35,7 @@ function getRisk(){
                 }
                 else{
                     document.getElementById("color").style.backgroundColor="#F51E09";
+                    document.getElementById("message").innerText="the risk is high, form test is recommended!";
                 }
             } else
                 alert("please check your net work" + "login error" + xhr.responseText);
