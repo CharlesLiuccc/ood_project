@@ -1,5 +1,8 @@
 package com.gwu.backend.Service;
 
+import com.gwu.backend.Controller.UserController;
+import com.gwu.backend.DAO.Info.*;
+import com.gwu.backend.DAO.UserDAO;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -8,6 +11,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
 
 import com.gwu.backend.Model.Health;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -18,6 +22,20 @@ import java.util.Scanner;
 
 @Service
 public class HealthService {
+    @Autowired
+    DoctorVisitDAO doctorVisitDAO;
+    @Autowired
+    MedicineDAO medicineDAO;
+    @Autowired
+    RelatedNewsDAO relatedNewsDAO;
+    @Autowired
+    SymptomDAO symptomDAO;
+    @Autowired
+    TakeoutDAO takeoutDAO;
+    @Autowired
+    TripDAO tripDAO;
+    @Autowired
+    UserDAO userDAO;
 
     public String getFromGoogle(Health health) throws IOException {
         HttpClient httpclient = HttpClients.createDefault();

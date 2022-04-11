@@ -6,7 +6,6 @@ public class User {
     private String user_name;
     private String user_pwd;
     private int user_state;
-    private int user_risk;
 
     public User(){
         this.user_id=-1;
@@ -14,7 +13,6 @@ public class User {
         this.user_name="";
         this.user_pwd="";
         this.user_state=0;
-        this.user_risk=0;
     }
 
     public User(String mail,String name,String pwd){
@@ -23,7 +21,6 @@ public class User {
         this.user_name=name;
         this.user_pwd=pwd;
         this.user_state=0;
-        this.user_risk=0;
     }
 
     public int getUser_id() {
@@ -32,14 +29,6 @@ public class User {
 
     public void setUser_id(int user_id) {
         this.user_id = user_id;
-    }
-
-    public int getUser_risk() {
-        return user_risk;
-    }
-
-    public void setUser_risk(int user_risk) {
-        this.user_risk = user_risk;
     }
 
     public int getUser_state() {

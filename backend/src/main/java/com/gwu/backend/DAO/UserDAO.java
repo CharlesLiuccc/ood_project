@@ -25,7 +25,6 @@ public class UserDAO {
                 result.setUser_mail(mail);
                 result.setUser_pwd(rs.getString("user_pwd"));
                 result.setUser_state(rs.getInt("user_state"));
-                result.setUser_risk(rs.getInt("user_risk"));
             }
         });
         return result;
@@ -42,7 +41,6 @@ public class UserDAO {
                 result.setUser_mail(rs.getString("user_mail"));
                 result.setUser_pwd(rs.getString("user_pwd"));
                 result.setUser_state(rs.getInt("user_state"));
-                result.setUser_risk(rs.getInt("user_risk"));
             }
         });
         return result;

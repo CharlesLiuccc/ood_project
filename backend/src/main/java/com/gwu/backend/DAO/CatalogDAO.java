@@ -23,6 +23,7 @@ public class CatalogDAO {
                 result.setCatalog_id(rs.getInt("catalog_id"));
                 result.setUser_id(user_id);
                 result.setAmount(rs.getInt("amount"));
+                result.setRisk(rs.getInt("risk"));
             }
         });
         return result;
@@ -36,6 +37,7 @@ public class CatalogDAO {
                 result.setCatalog_id(catalog_id);
                 result.setUser_id(rs.getInt("user_id"));
                 result.setAmount(rs.getInt("amount"));
+                result.setRisk(rs.getInt("risk"));
             }
         });
         return result;
@@ -44,6 +46,12 @@ public class CatalogDAO {
     public boolean updateAmount(int catalog_id,int amount){
         String sql = "UPDATE catalog set amount = ? WHERE catalog_id = ?";
         jdbcTemplate.update(sql,amount,catalog_id);
+        return true;
+    }
+
+    public boolean updateRisk(int catalog_id,int risk){
+        String sql = "UPDATE catalog set risk = ? WHERE catalog_id = ?";
+        jdbcTemplate.update(sql,risk,catalog_id);
         return true;
     }
 

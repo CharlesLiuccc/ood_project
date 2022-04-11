@@ -38,6 +38,8 @@ public class SymptomController {
             current_catalog.addInfo();
             if(catalogDAO.updateAmount(Integer.parseInt(catalog_id),current_catalog.getAmount())){
                 //add succeed
+                current_catalog.setRisk(current_catalog.getRisk()+5);
+                catalogDAO.updateRisk(Integer.parseInt(catalog_id),current_catalog.getRisk());
                 return JSONObject.toJSONString(0);
             }
             else{

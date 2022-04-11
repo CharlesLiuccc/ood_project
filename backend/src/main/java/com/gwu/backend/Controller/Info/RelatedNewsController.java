@@ -37,6 +37,19 @@ public class RelatedNewsController {
             current_catalog.addInfo();
             if(catalogDAO.updateAmount(Integer.parseInt(catalog_id),current_catalog.getAmount())){
                 //add succeed
+                if(detail =="0"){
+                    current_catalog.setRisk(current_catalog.getRisk()-1);
+                }
+                else if(detail=="1"){
+                    current_catalog.setRisk(current_catalog.getRisk()+1);
+                }
+                else if(detail=="2"){
+                    current_catalog.setRisk(current_catalog.getRisk()+2);
+                }
+                else if(detail=="3"){
+                    current_catalog.setRisk(current_catalog.getRisk()+3);
+                }
+                catalogDAO.updateRisk(Integer.parseInt(catalog_id),current_catalog.getRisk());
                 return JSONObject.toJSONString(0);
             }
             else{

@@ -65,4 +65,22 @@ public class RelatedNewsDAO {
             return true;
         }
     }
+
+    public ArrayList<RelatedNews> findTypeNum(int catalog_id,String type){
+        ArrayList<RelatedNews> result = new ArrayList<>();
+        String sql = "SELECT * FROM related_news_info WHERE catalog_id = ? AND detail = ?";
+        jdbcTemplate.query(sql, new Object[]{catalog_id,type}, new RowCallbackHandler() {
+            @Override
+            public void processRow(ResultSet rs) throws SQLException {
+                RelatedNews current = new RelatedNews();
+                current.setInfo_id(rs.getInt("info_id"));
+                current.setCatalog_id(catalog_id);
+                current.setInfo_timestamp(rs.getString("info_timestamp"));
+                current.setNews_date(rs.getString("news_date"));
+                current.setNews_detail(rs.getString("news_detail"));
+                result.add(current);
+            }
+        });
+        return result;
+    }
 }

@@ -119,8 +119,5 @@ public class UserController {
             return JSONObject.toJSONString(0)+",catalog_id:"+JSONObject.toJSONString(current_catalog.getCatalog_id())
                     +",amount:"+JSONObject.toJSONString(current_catalog.getAmount());
         }
-
     }
-
-
 }

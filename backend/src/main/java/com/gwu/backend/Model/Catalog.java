@@ -4,16 +4,19 @@ public class Catalog {
     private int catalog_id;
     private int user_id;
     private int amount;
+    private int risk;
 
     public Catalog(){
         this.catalog_id=-1;
         this.user_id = -1;
         this.amount=0;
+        this.risk=0;
     }
     public Catalog(int user_id){
         this.catalog_id=-1;
         this.user_id=user_id;
         this.amount=0;
+        this.risk=0;
     }
 
     public int getUser_id() {
@@ -38,6 +41,14 @@ public class Catalog {
 
     public void setCatalog_id(int catalog_id) {
         this.catalog_id = catalog_id;
+    }
+
+    public void setRisk(int risk) {
+        this.risk = risk;
+    }
+
+    public int getRisk() {
+        return risk;
     }
 
     public boolean addInfo(){
