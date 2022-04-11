@@ -7,6 +7,7 @@
 </head>
 
 <script src="../static/layui/layui.js"></script>
+<script type="module" src="../static/js/form.js"></script>
 <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
 
 <body>
@@ -36,7 +37,7 @@
             <div>
                 <label class="layui-form-mid" style="width:75%;margin-left:25%">My cough is worse when I lie down</label>
                 <br><br><br>
-                <div id="Q1" class="layui-input-block">
+                <div id="Q1" name="Frequency" class="layui-input-block">
 
                     <input type="radio" name="Q1Frequency" value="0" title="0">
                     <input type="radio" name="Q1Frequency" value="1" title="1">
@@ -48,7 +49,7 @@
                 <!--Q2-->
                 <label class="layui-form-mid" style="width:50%;margin-left:24%;margin-right:24%">My coughing problem causes me to restrict my personal and social life.</label>
                 <br><br>
-                <div id="Q2" class="layui-input-block">
+                <div id="Q2" name="Frequency" class="layui-input-block">
 
                     <input type="radio" name="Q2Frequency" value="0" title="0">
                     <input type="radio" name="Q2Frequency" value="1" title="1">
@@ -59,7 +60,7 @@
             <!--Q3-->
             <label class="layui-form-mid" style="width:50%;margin-left:24%;margin-right:24%">I tend to avoid palces because of my cough problem</label>
             <br><br><br>
-            <div  id="Q3" class="layui-input-block">
+            <div  id="Q3" name="Frequency" class="layui-input-block">
 
                 <input type="radio" name="Q3Frequency" value="0" title="0">
                 <input type="radio" name="Q3Frequency" value="1" title="1">
@@ -70,7 +71,7 @@
             <!--Q4-->
             <label class="layui-form-mid" style="width:50%;margin-left:24%;margin-right:24%">I feel embarrassed because of my coughing problem</label>
             <br><br><br>
-            <div  id="Q4" class="layui-input-block">
+            <div  id="Q4" name="Frequency" class="layui-input-block">
 
                 <input type="radio" name="Q4Frequency" value="0" title="0">
                 <input type="radio" name="Q4Frequency" value="1" title="1">
@@ -81,7 +82,7 @@
             <!--Q5-->
             <label class="layui-form-mid" style="width:50%;margin-left:24%;margin-right:24%">People ask, "What's wrong?" Because I cough a lot</label>
             <br><br><br>
-            <div  id="Q5" class="layui-input-block">
+            <div  id="Q5" name="Frequency" class="layui-input-block">
 
                 <input type="radio" name="Q5Frequency" value="0" title="0">
                 <input type="radio" name="Q5Frequency" value="1" title="1">
@@ -92,7 +93,7 @@
             <!--Q6-->
             <label class="layui-form-mid" style="width:50%;margin-left:24%;margin-right:24%">I run out of air when I cough</label>
             <br><br><br>
-            <div  id="Q6" class="layui-input-block">
+            <div  id="Q6" name="Frequency" class="layui-input-block">
 
                 <input type="radio" name="Q6Frequency" value="0" title="0">
                 <input type="radio" name="Q6Frequency" value="1" title="1">
@@ -103,7 +104,7 @@
             <!--Q7-->
             <label class="layui-form-mid" style="width:50%;margin-left:24%;margin-right:24%">My coughing problem affects my voice</label>
             <br><br><br>
-            <div  id="Q7" class="layui-input-block">
+            <div  id="Q7" name="Frequency" class="layui-input-block">
 
                 <input type="radio" name="Q7Frequency" value="0" title="0">
                 <input type="radio" name="Q7Frequency" value="1" title="1">
@@ -114,7 +115,7 @@
             <!--Q8-->
             <label class="layui-form-mid" style="width:50%;margin-left:24%;margin-right:24%">My coughing problem limits my physical activity</label>
             <br><br><br>
-            <div  id="Q8" class="layui-input-block">
+            <div  id="Q8" name="Frequency" class="layui-input-block">
 
                 <input type="radio" name="Q8Frequency" value="0" title="0">
                 <input type="radio" name="Q8Frequency" value="1" title="1">
@@ -125,7 +126,7 @@
             <!--Q9-->
             <label class="layui-form-mid" style="width:50%;margin-left:24%;margin-right:24%">My coughing problem upsets me</label>
             <br><br><br>
-            <div  id="Q9" class="layui-input-block">
+            <div  id="Q9" name="Frequency" class="layui-input-block">
 
                 <input type="radio" name="Q9Frequency" value="0" title="0">
                 <input type="radio" name="Q9Frequency" value="1" title="1">
@@ -136,7 +137,7 @@
             <!--Q10-->
             <label class="layui-form-mid" style="width:50%;margin-left:24%;margin-right:24%">People ask me if I am sick because I cough a lot</label>
             <br><br><br>
-            <div  id="Q10" class="layui-input-block">
+            <div  id="Q10" name="Frequency" class="layui-input-block">
 
                 <input type="radio" name="Q10Frequency" value="0" title="0">
                 <input type="radio" name="Q10Frequency" value="1" title="1">
@@ -155,13 +156,13 @@
             </div>-->
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit="" lay-filter="demo1">Submit</button>
+                <button id="form-submit" class="layui-btn" lay-submit="" lay-filter="demo1">Submit</button>
                 <button type="reset" class="layui-btn layui-btn-primary">Reset</button>
             </div>
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button style="blue" id = "negative" class="layui-btn" lay-submit="" lay-filter="demo1">I have got negative result</button>
+                <button style="color:blue" id = "negative" class="layui-btn" lay-submit="" lay-filter="demo1">I have got negative result</button>
 
             </div>
         </div>
