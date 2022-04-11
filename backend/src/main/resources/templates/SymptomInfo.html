@@ -85,21 +85,12 @@
 </div>
 <script>
     layui.use(['form', 'layedit', 'laydate'], function () {
-        var form = layui.form
-            , layer = layui.layer
+        var form = layui.form;
 
         /**
          * 初始化表单，要加上，不然刷新部分组件可能会不加载
          */
         form.render();
-
-        //监听提交
-        form.on('submit(demo1)', function (data) {
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            })
-            return false;
-        });
     });
 </script>
 </body>

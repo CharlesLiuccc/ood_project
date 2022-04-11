@@ -8,7 +8,7 @@ function trip() {
     let destination = document.getElementById("destination").value;
     let trips_start_time = document.getElementById("trips_start_time").value;
     let trips_end_time = document.getElementById("trips_end_time").value;
-    let trip_detail = document.getElementById("trip_detail")
+    let trip_detail = document.getElementById("trip_detail").value;
 
     let xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("microsoft.XMLHttp");
     xhr.onreadystatechange = () => {
@@ -20,7 +20,7 @@ function trip() {
                     alert("database error, please contact the administrator");
                 } else {
                     alert("submit succeed!");
-                    window.location.href = "main";
+                    window.location.href="main";
                 }
 
             } else
