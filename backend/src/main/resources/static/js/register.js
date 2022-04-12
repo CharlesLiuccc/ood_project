@@ -37,8 +37,9 @@ function register(){
                         alert("mail has already exists!");
                     }
                     else{
-                        alert("resgister succeed!");
                         window.location.href="login";
+                        alert("resgister succeed!");
+
                     }
 
                 } else

@@ -48,8 +48,9 @@ function takeouts(){
                         alert("database error, please contact the administrator");
                     }
                     else{
-                        alert("submit succeed!");
                         window.location.href="main";
+                        alert("submit succeed!");
+
                     }
 
                 } else
